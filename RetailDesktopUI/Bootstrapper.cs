@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using RetailDesktopUI.Helpers;
 using RetailDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RetailDesktopUI
 {
@@ -15,6 +17,12 @@ namespace RetailDesktopUI
         public Bootstrapper()
         {
             Initialize();
+
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+                PasswordBoxHelper.BoundPasswordProperty,
+                "Password",
+                "PasswordChanged");
         }
         protected override void Configure()
         {
