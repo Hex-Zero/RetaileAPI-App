@@ -8,9 +8,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RetailDesktopUI.Helpers
+namespace RMDesktopUI.Library.Api
 {
-    class APIHelper : IAPIHelper
+    public class APIHelper : IAPIHelper
     {
         public HttpClient apiClient { get; set; }
         public APIHelper()

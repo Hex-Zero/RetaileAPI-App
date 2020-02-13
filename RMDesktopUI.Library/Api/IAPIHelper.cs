@@ -1,7 +1,7 @@
 ﻿using RetailDesktopUI.Models;
 using System.Threading.Tasks;
 
-namespace RetailDesktopUI.Helpers
+namespace RMDesktopUI.Library.Api
 {
     public interface IAPIHelper
     {

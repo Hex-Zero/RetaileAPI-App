@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using RetailDesktopUI.Helpers;
 using RetailDesktopUI.ViewModels;
+using RMDesktopUI.Library.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
