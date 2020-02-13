@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using RetailDesktopUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace RetailDesktopUI.ViewModels
     {
 		private string _userName;
 		private string _password;
+		private IAPIHelper _apiHelper;
+		public LoginViewModel(IAPIHelper apiHelper)
+		{
+			_apiHelper = apiHelper;
+		}
 		public string UserName
 		{
 			get { return _userName; }
@@ -32,15 +38,22 @@ namespace RetailDesktopUI.ViewModels
 		public bool CanLogIn(string userName, string password)
 		{
 			bool output = false;
-			if(userName?.Length > 0 && Password?.Length > 0)
+			if(UserName?.Length > 0 && Password?.Length > 0)
 			{
 				output = true;
 			}
 			return output;
 		}
-		public void  LogIn(string userName, string password)
+		public async Task  LogIn(string userName, string password)
 		{
-			Console.WriteLine();
+			try
+			{
+				var result = await _apiHelper.Authenticate(UserName, Password);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 	}
 }
