@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RMData", "RMData\RMData.sql
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailDesktopUI", "RetailDesktopUI\RetailDesktopUI.csproj", "{A7CCB5CF-FA17-44EC-87A8-D341349FBF8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetaileAPI.Library", "RetaileAPILibrary\RetaileAPI.Library.csproj", "{122D64BA-9F3D-4123-8381-0BB954D70DC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{A7CCB5CF-FA17-44EC-87A8-D341349FBF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7CCB5CF-FA17-44EC-87A8-D341349FBF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7CCB5CF-FA17-44EC-87A8-D341349FBF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{122D64BA-9F3D-4123-8381-0BB954D70DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122D64BA-9F3D-4123-8381-0BB954D70DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122D64BA-9F3D-4123-8381-0BB954D70DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122D64BA-9F3D-4123-8381-0BB954D70DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
