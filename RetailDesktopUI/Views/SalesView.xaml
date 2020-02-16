@@ -30,7 +30,13 @@
 
         <TextBlock Text="Items" Grid.Row="1" Grid.Column="0" Margin="20 10 0 0"/>
         <ListBox x:Name="Products" Grid.Row="2" Grid.Column="0" Margin="20 0 0 0"
-                 MinHeight="200" MinWidth="150"/>
+                 MinHeight="200" MinWidth="150" >
+            <ListBox.ItemTemplate>
+                 <DataTemplate>
+                     <TextBlock Text="{Binding ProductName}" />
+                 </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
         <TextBlock Text="Quantity" Grid.Row="1" Grid.Column="1"  Margin="20 10,0,0"/>
