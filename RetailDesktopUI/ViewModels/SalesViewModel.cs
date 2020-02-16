@@ -38,9 +38,25 @@ namespace RetailDesktopUI.ViewModels
 				NotifyOfPropertyChange(() => Products);
 			}
 		}
-		private BindingList<ProductModel> _cart;
 
-		public BindingList<ProductModel> Cart
+		private ProductModel _selectedProduct;
+
+		public ProductModel SelectedProduct
+		{
+			get { return _selectedProduct; }
+			set 
+			{ 
+				_selectedProduct = value;
+				NotifyOfPropertyChange(() => SelectedProduct);
+				NotifyOfPropertyChange(() => CanAddToCart);
+			}
+		}
+
+
+
+		private BindingList<CartItemModel> _cart = new BindingList<CartItemModel>();
+
+		public BindingList<CartItemModel> Cart
 		{
 			get { return _cart; }
 			set 
@@ -59,6 +75,7 @@ namespace RetailDesktopUI.ViewModels
 			{
 				_itemQuantity = value;
 				NotifyOfPropertyChange(() => ItemQuantity);
+				NotifyOfPropertyChange(() => CanAddToCart);
 			}
 		}
 		public string SubTotal
@@ -87,14 +104,22 @@ namespace RetailDesktopUI.ViewModels
 			get
 			{
 				bool output = false;
-
+				if(ItemQuantity > 0 && SelectedProduct?.QuantityInStock >= ItemQuantity )
+				{
+					output = true;
+				}
 
 				return output;
 			}
 		}
 		public void AddToCart()
 		{
-
+			CartItemModel Item = new CartItemModel
+			{
+				Product = SelectedProduct,
+				QuantityInCart = ItemQuantity
+			};
+			Cart.Add(Item);
 		}
 		public bool CanRemoveFromCart
 		{
