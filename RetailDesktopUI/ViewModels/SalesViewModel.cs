@@ -66,7 +66,7 @@ namespace RetailDesktopUI.ViewModels
 			}
 		}
 
-		private int _itemQuantity;
+		private int _itemQuantity = 1;
 
 		public int ItemQuantity
 		{
@@ -82,7 +82,12 @@ namespace RetailDesktopUI.ViewModels
 		{
 			get
 			{
-				return "$0.00";
+				decimal subTotal = 0;
+				foreach(var item in Cart)
+				{
+					subTotal += (item.Product.RetailPrice * item.QuantityInCart);
+				}
+				return subTotal.ToString("C");
 			}
 		}
 		public string Tax
@@ -114,12 +119,26 @@ namespace RetailDesktopUI.ViewModels
 		}
 		public void AddToCart()
 		{
-			CartItemModel Item = new CartItemModel
+			CartItemModel existingItem = Cart.FirstOrDefault((x) => x.Product == SelectedProduct);
+			if(existingItem != null)
 			{
-				Product = SelectedProduct,
-				QuantityInCart = ItemQuantity
-			};
-			Cart.Add(Item);
+				existingItem.QuantityInCart += ItemQuantity;
+				Cart.Remove(existingItem);
+				Cart.Add(existingItem);
+			}
+			else
+			{
+				CartItemModel Item = new CartItemModel
+				{
+					Product = SelectedProduct,
+					QuantityInCart = ItemQuantity
+				};
+				Cart.Add(Item);
+			}
+			
+			SelectedProduct.QuantityInStock -= ItemQuantity;
+			ItemQuantity = 1;
+			NotifyOfPropertyChange(() => SubTotal);
 		}
 		public bool CanRemoveFromCart
 		{
@@ -133,7 +152,7 @@ namespace RetailDesktopUI.ViewModels
 		}
 		public void RemoveFromCart()
 		{
-
+			NotifyOfPropertyChange(() => SubTotal);
 		}
 		public bool CanCheckOut
 		{
