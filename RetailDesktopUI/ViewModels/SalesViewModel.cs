@@ -1,4 +1,6 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
+using RetailDesktopUI.Models;
 using RMDesktopUI.Library.Api;
 using RMDesktopUI.Library.Helpers;
 using RMDesktopUI.Library.Models;
@@ -16,11 +18,13 @@ namespace RetailDesktopUI.ViewModels
 		IProductEndpoint _productEndpoint;
 		IConfigHelper _configHelper;
 		ISaleEndpoint _saleEndpoint;
-		public SalesViewModel(IProductEndpoint productEndpoint, IConfigHelper configHelper, ISaleEndpoint saleEndpoint)
+		IMapper _mapper;
+		public SalesViewModel(IProductEndpoint productEndpoint, IConfigHelper configHelper, ISaleEndpoint saleEndpoint , IMapper mapper)
 		{
 			_productEndpoint = productEndpoint;
 			_saleEndpoint = saleEndpoint;
 			_configHelper = configHelper;
+			_mapper = mapper;
 		}
 		protected override async void OnViewLoaded(object view)
 		{
@@ -30,11 +34,12 @@ namespace RetailDesktopUI.ViewModels
 		public async Task LoadProducts()
 		{
 			var productList = await _productEndpoint.GetAll();
-			Products = new BindingList<ProductModel>(productList);
+			var products = _mapper.Map<List<ProductDisplayModel>>(productList);
+			Products = new BindingList<ProductDisplayModel>(products);
 		}
-        private BindingList<ProductModel> _products;
+        private BindingList<ProductDisplayModel> _products;
 
-		public BindingList<ProductModel> Products
+		public BindingList<ProductDisplayModel> Products
 		{
 			get { return _products; }
 			set 
@@ -44,9 +49,9 @@ namespace RetailDesktopUI.ViewModels
 			}
 		}
 
-		private ProductModel _selectedProduct;
+		private ProductDisplayModel _selectedProduct;
 
-		public ProductModel SelectedProduct
+		public ProductDisplayModel SelectedProduct
 		{
 			get { return _selectedProduct; }
 			set 
@@ -59,9 +64,9 @@ namespace RetailDesktopUI.ViewModels
 
 
 
-		private BindingList<CartItemModel> _cart = new BindingList<CartItemModel>();
+		private BindingList<CartItemDisplayModel> _cart = new BindingList<CartItemDisplayModel>();
 
-		public BindingList<CartItemModel> Cart
+		public BindingList<CartItemDisplayModel> Cart
 		{
 			get { return _cart; }
 			set 
@@ -137,16 +142,14 @@ namespace RetailDesktopUI.ViewModels
 		}
 		public void AddToCart()
 		{
-			CartItemModel existingItem = Cart.FirstOrDefault((x) => x.Product == SelectedProduct);
+			CartItemDisplayModel existingItem = Cart.FirstOrDefault((x) => x.Product == SelectedProduct);
 			if(existingItem != null)
 			{
 				existingItem.QuantityInCart += ItemQuantity;
-				Cart.Remove(existingItem);
-				Cart.Add(existingItem);
 			}
 			else
 			{
-				CartItemModel Item = new CartItemModel
+				CartItemDisplayModel Item = new CartItemDisplayModel
 				{
 					Product = SelectedProduct,
 					QuantityInCart = ItemQuantity
