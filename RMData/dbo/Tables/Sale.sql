@@ -5,5 +5,6 @@
     [SaleDate] DATETIME2 NOT NULL, 
     [Tax] MONEY NOT NULL, 
     [Total] MONEY NOT NULL, 
-    [SubTotal] MONEY NOT NULL
+    [SubTotal] MONEY NOT NULL, 
+    CONSTRAINT [FK_Sale_ToUser] FOREIGN KEY ([CashierID]) REFERENCES [User]([Id])
 )
