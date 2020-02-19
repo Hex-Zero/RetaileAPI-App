@@ -76,8 +76,6 @@ namespace RetailDesktopUI.ViewModels
 			}
 		}
 
-
-
 		private BindingList<CartItemDisplayModel> _cart = new BindingList<CartItemDisplayModel>();
 
 		public BindingList<CartItemDisplayModel> Cart
