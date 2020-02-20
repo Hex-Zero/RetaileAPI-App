@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RetailDesktopUI.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="540" Width="760">
+        Title="Retail Demo" Height="540" Width="760">
     <DockPanel>
-        <Menu DockPanel.Dock="Top" FontSize="20">
+        <Menu DockPanel.Dock="Top" FontSize="12">
             <MenuItem Header="_File" >
-                
+                <MenuItem x:Name="ExitApplication"  Header="E_xit"/>
             </MenuItem>
-            <MenuItem Header="_Account">
-                <MenuItem x:Name="LoginScreen" Header="_Login" />
+            <MenuItem Header="_Account"  Visibility="{Binding IsLoggedIn,Converter={StaticResource
+                  BooleanToVisibiltyConverter},FallbackValue=Collapsed}" >
+                <!--<MenuItem x:Name="LoginScreen" Header="_Login" />-->
+                <MenuItem x:Name="LogOut" Header="Log_Out"/>
             </MenuItem>
-          
         </Menu>
         <Grid >
             <ContentControl x:Name="ActiveItem" Margin="5"/>
