@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using RetailDesktopUI.EventModels;
+using RMDesktopUI.Library.Api;
 using RMDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace RetailDesktopUI.ViewModels
        private IEventAggregator _events;
        private SalesViewModel _salesVM;
        private ILoggedInUserModel _user;
-       public ShellViewModel( IEventAggregator events, SalesViewModel salesVM , ILoggedInUserModel user )
+       private IAPIHelper _apiHelper;
+       public ShellViewModel( IEventAggregator events, SalesViewModel salesVM , ILoggedInUserModel user, IAPIHelper apiHelper )
         {
             _events = events;
             _salesVM = salesVM;
             _user = user;
+            _apiHelper = apiHelper;
 
             _events.Subscribe(this);
 
@@ -27,9 +30,10 @@ namespace RetailDesktopUI.ViewModels
         }
         public void LogOut()
         {
-            _user.LogOffUser();
+            _user.ResetUser();
+            _apiHelper.LogOffUser();
             ActivateItem(IoC.Get<LoginViewModel>());
-             NotifyOfPropertyChange(() => IsLoggedIn);
+            NotifyOfPropertyChange(() => IsLoggedIn);
         }
         public bool IsLoggedIn
         {
