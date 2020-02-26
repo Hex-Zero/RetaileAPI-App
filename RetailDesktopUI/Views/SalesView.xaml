@@ -53,7 +53,7 @@
 
         <TextBlock Text="Quantity" Grid.Row="1" Grid.Column="1"  Margin="20 10,0,0"/>
         <StackPanel Margin="20 0" Orientation="Vertical" Grid.Column="1" Grid.Row="2">
-            <TextBox x:Name="ItemQuantity" MinWidth="100" />
+            <TextBox x:Name="ItemQuantity" MinWidth="99" />
             <Button x:Name="AddToCart" Content="Add to Cart" Padding="5" Margin="0 20"/>
             <Button x:Name="RemoveFromCart" Padding="5" Content="Remove from Cart"/>
         </StackPanel>
