@@ -25,21 +25,19 @@
                    HorizontalAlignment="Center" FontSize="48" Margin="0,0,0,20">
             Login Form
         </TextBlock>
-        <!-- Error message -->
         <TextBlock x:Name="ErrorMessage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,20"
                 
                   Visibility="{Binding IsErrorVisible,Converter={StaticResource
                   BooleanToVisibiltyConverter},FallbackValue=Collapsed}"
                    
                   Foreground="MediumPurple" MaxWidth="241" TextWrapping="Wrap">
-            
+
         </TextBlock>
-        <!-- Username row -->
         <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14" >
             Username:
         </TextBlock>
         <TextBox x:Name="UserName" Grid.Row="2" Grid.Column="2" MinWidth="100"  Margin="0,0,0,20"/>
-        <!-- Password row -->
+
         <TextBlock Grid.Row="3" Grid.Column="1" FontSize="14" >
             Password:
         </TextBlock>
