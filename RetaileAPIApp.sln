@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetaileAPI", "RetaileAPI\RetaileAPI.csproj", "{3FF6379E-217B-4297-9E80-2AEEA0C8A0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetaileDataManager", "RetaileAPI\RetaileDataManager.csproj", "{3FF6379E-217B-4297-9E80-2AEEA0C8A0BD}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RMData", "RMData\RMData.sqlproj", "{98E0C5F1-8A0E-440F-B353-7A64DF2975A6}"
 EndProject
