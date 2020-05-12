@@ -1,0 +1,3 @@
+@Imports RMDataManage.Areas.HelpPage.ModelDescriptions
+@ModelType SimpleTypeModelDescription
+@Model.Documentation
